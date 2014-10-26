@@ -17,15 +17,15 @@
     append-cr-url = true
     autofetch-interval = 10 minutes ago
     git-config-basic = true
-	pull-request-by-default = false
+    pull-request-by-default = false
 [color]
     diff = auto
     ui = true
 [user]
-	email = derebolt@amazon.com
-	name = Derek Bolt
+    email = derebolt@amazon.com
+    name = Derek Bolt
 [core]
-	pager = less -FMRiX
-	excludesfile = ~/.config/git/excludes
+    pager = less -FMRiX
+    excludesfile = ~/.config/git/excludes
 [push]
-	default = simple
+    default = simple
