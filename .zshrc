@@ -27,7 +27,8 @@ function setup_path {
 
 function setup_prompt {
     function git_branch() {
-        if $(git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
+        is_git_branch=$(git rev-parse --is-inside-work-tree 2> /dev/null); 
+        if [ ! -z $is_git_branch ]; then
             echo " %{$fg[white]%}on %{$fg[red]%}$(git rev-parse --abbrev-ref HEAD)"
         else
             echo ""
