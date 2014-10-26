@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [[ `hostname` == derebolt* ]]; then
+    NAME="desktop:"
+else
+    NAME="laptop:"
+fi
+
 function configure_zsh {
     fpath=($HOME/.zsh/completions $fpath)
     autoload -U compinit && compinit
@@ -35,7 +41,7 @@ function setup_prompt {
         fi
     }
 
-    PS1='%{$fg[green]%}%~$(git_branch) %{$fg[white]%}→ '
+    PS1='%{$fg[yellow]%}${NAME}%{$fg[green]%}%~$(git_branch) %{$fg[white]%}→ '
 }
 
 function setup_aliases {
