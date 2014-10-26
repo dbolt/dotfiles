@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ `hostname` == derebolt* ]]; then
-    NAME="desktop:"
+    NAME="desktop:"    
 else
     NAME="laptop:"
 fi
@@ -21,6 +21,9 @@ function configure_zsh {
     bindkey '^R' history-incremental-search-backward
 
     ZSH_THEME="smyck"
+
+    zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 }
 
 function setup_path {
