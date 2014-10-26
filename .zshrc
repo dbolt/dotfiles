@@ -14,7 +14,7 @@ function configure_zsh {
     setopt appendhistory # don't clobber history files
     bindkey '^R' history-incremental-search-backward
 
-    ZSH_THEME="amuse"
+    ZSH_THEME="smyck"
 }
 
 function setup_path {
