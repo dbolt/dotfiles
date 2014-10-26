@@ -26,19 +26,15 @@ function setup_path {
 }
 
 function setup_prompt {
-    typeset -ga precmd_functions
-
-    function parse_git_branch {
+    function git_branch() {
         if $(git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
-            git_branch=$(echo " %{$fg[white]%}on %{$fg[red]%}$(git rev-parse --abbrev-ref HEAD)")
+            echo " %{$fg[white]%}on %{$fg[red]%}$(git rev-parse --abbrev-ref HEAD)"
         else
-            git_branch=""
+            echo ""
         fi
     }
 
-    precmd_functions+=parse_git_branch
-    precmd_functions+=parse_virtual_env
-    PS1='%{$fg[green]%}%~${git_branch}${virtual_env} %{$fg[white]%}→ '
+    PS1='%{$fg[green]%}%~$(git_branch) %{$fg[white]%}→ '
 }
 
 function setup_aliases {
