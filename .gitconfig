@@ -1,0 +1,31 @@
+[alias]
+    co = checkout
+    cob = checkout -b 
+    ci = commit
+    st = status
+    br = branch
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    dag = log --graph --decorate --all
+    lg = log --pretty=format:\"%C(yellow)%h%C(reset) %C(cyan)%ad%C(reset) %C(green)%aN%Creset%C(bold red)%d%C(reset) %s\" --date=short --no-merges
+    pull = pull --rebase
+    fl = log -u
+    la = "!git config -l | grep alias | cut -c 7-"  ; list all my aliases
+    rb = rebase
+    rbc = rebase --continue
+    cia = commit --amend
+[amazon]
+    append-cr-url = true
+    autofetch-interval = 10 minutes ago
+    git-config-basic = true
+	pull-request-by-default = false
+[color]
+    diff = auto
+    ui = true
+[user]
+	email = derebolt@amazon.com
+	name = Derek Bolt
+[core]
+	pager = less -FMRiX
+	excludesfile = ~/.config/git/excludes
+[push]
+	default = simple
