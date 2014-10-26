@@ -1,11 +1,5 @@
 #!/bin/bash
 
-if [[ `hostname` == derebolt* ]]; then
-    NAME="desktop:"    
-else
-    NAME="laptop:"
-fi
-
 function configure_zsh {
     fpath=($HOME/.zsh/completions $fpath)
     autoload -U compinit && compinit
@@ -21,9 +15,6 @@ function configure_zsh {
     bindkey '^R' history-incremental-search-backward
 
     ZSH_THEME="smyck"
-
-    zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 }
 
 function setup_path {
@@ -44,7 +35,6 @@ function setup_prompt {
         fi
     }
 
-    #PS1='%{$fg[yellow]%}${NAME}%{$fg[green]%}%~$(git_branch) %{$fg[white]%}→ '
     PS1='%{$fg[yellow]%}${NAME}%{$fg[green]%}%~$(git_branch)%{$fg[white]%}$ '
 }
 
@@ -54,7 +44,13 @@ function setup_aliases {
     fi
 }
 
-configure_zsh
-setup_path
-setup_prompt
+if [[ `hostname` == derebolt* ]]; then
+    NAME="desktop:"    
+else
+    configure_zsh
+    setup_path
+    setup_prompt
+    NAME="laptop:"
+fi
+
 setup_aliases
