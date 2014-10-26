@@ -1,4 +1,3 @@
-dotfiles
-========
+Removes any duplicts in ~/ and setups up symlinks
 
-Environment dot files
+./bin/install.sh
