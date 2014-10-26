@@ -44,7 +44,8 @@ function setup_prompt {
         fi
     }
 
-    PS1='%{$fg[yellow]%}${NAME}%{$fg[green]%}%~$(git_branch) %{$fg[white]%}→ '
+    #PS1='%{$fg[yellow]%}${NAME}%{$fg[green]%}%~$(git_branch) %{$fg[white]%}→ '
+    PS1='%{$fg[yellow]%}${NAME}%{$fg[green]%}%~$(git_branch)%{$fg[white]%}$ '
 }
 
 function setup_aliases {
