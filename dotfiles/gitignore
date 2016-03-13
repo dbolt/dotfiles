@@ -1,6 +1,4 @@
 /build
-/apollo-overrides
-/coral-generated-src
 /eclipse-build
 .settings
 .classpath
