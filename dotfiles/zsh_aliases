@@ -1,0 +1,88 @@
+#######################
+# REMAP KEYS
+#######################
+
+bindkey ^B backward-word
+bindkey ^W forward-word
+bindkey ^A beginning-of-line
+bindkey ^E end-of-line
+
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
+
+########################
+# BASIC LINUX COMMANDS
+########################
+
+alias ls='ls --color=auto'
+alias ll='ls -l -h'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+alias grep='grep --color=auto'
+alias vi='vim'
+alias edit='vim'
+alias ping='ping -c 5'
+alias zrc='source ~/.zshrc'
+alias removeNewline="sed -i ':a;N;\$!ba;s/\n/ /g'"
+alias removeNonAscii='iconv -c -f utf-8 -t ascii'
+alias parsejson="ruby -rjson -e 'puts JSON.pretty_generate(JSON.parse(ARGF.read))'"
+
+# parse json in a file. Assumes each line contains valid json. Useful for
+# formatting json from recs output
+#
+# $1: name of the file to read from
+function parse-json-file() {
+    for i in {1..`cat $1 | wc -l`}; do head -n $i $1 | tail -n 1 | parsejson; done
+}
+
+function portusage() {
+    netstat -lnp -t | grep $1
+}
+
+#checks if port is open, useful for verifying desktop to prod connections are
+#open. Filtered means blocked, open / close means open through firewall and not
+#listening or currently listening, respectively.
+#
+#$1 = hostname, the host you wish to communicate with
+#$2 = port to communicate on
+function portallowed() {
+    nmap $1 -p $2
+}
+
+# Epoch time conversion
+function epoch() {
+  TESTREG="[\d{10}]"
+  if [[ "$1" =~ $TESTREG ]]; then
+    # is epoch
+    date -d @$*
+  else
+    # is date
+    if [ $# -gt 0 ]; then
+      date +%s --date="$*"
+    else
+      date +%s
+    fi
+  fi
+}
+
+zstyle ':completion:*' completer _complete
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+autoload -Uz compinit
+compinit
+
+#allow tab completion in the middle of a word
+setopt COMPLETE_IN_WORD

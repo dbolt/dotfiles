@@ -1,0 +1,41 @@
+#!/bin/bash
+
+function configure_zsh {
+	autoload -U compinit && compinit
+	autoload -U colors && colors
+	setopt prompt_subst
+	setopt no_case_glob
+	export CLICOLOR=1
+	export EDITOR=/usr/local/bin/vim
+	HISTFILE=~/.histfile
+	HISTSIZE=1000
+	SAVEHIST=1000
+	setopt appendhistory # don't clobber history files
+	bindkey '^R' history-incremental-search-backward
+
+	ZSH_THEME="smyck"
+}
+
+function setup_prompt {
+    function git_branch() {
+        is_git_branch=$(git rev-parse --is-inside-work-tree 2> /dev/null); 
+        if [ ! -z $is_git_branch ]; then
+            echo " %{$fg[white]%}on %{$fg[red]%}$(git rev-parse --abbrev-ref HEAD)"
+        else
+            echo ""
+        fi
+    }
+
+    PS1='%{$fg[yellow]%}${NAME}%{$fg[green]%}%~$(git_branch)%{$fg[green]%} → %{$fg[white]%}'
+}
+
+function setup_aliases {
+    if [ -f ~/.zsh_aliases ]; then
+        source ~/.zsh_aliases
+    fi
+}
+
+NAME="$HOST:"
+configure_zsh
+setup_prompt
+setup_aliases

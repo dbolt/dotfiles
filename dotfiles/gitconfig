@@ -1,0 +1,30 @@
+[alias]
+    fixup = commit -a --fixup HEAD
+    co = checkout
+    cob = checkout -b 
+    ci = commit
+    st = status
+    br = branch
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    dag = log --graph --decorate --all
+    lg = log --pretty=format:\"%C(yellow)%h%C(reset) %C(cyan)%ad%C(reset) %C(green)%aN%Creset%C(bold red)%d%C(reset) %s\" --date=short --no-merges
+    pull = pull --rebase
+    fl = log -u
+    la = "!git config -l | grep alias | cut -c 7-"  ; list all my aliases
+    rb = rebase
+    rbi = rebase -i --autosquash
+    rbc = rebase --continue
+    cia = commit --amend
+    ciam = commit -am
+[color]
+    diff = auto
+    ui = true
+[user]
+    email = derekbolt2@gmail.com
+    name = Derek Bolt
+[core]
+    pager = less -FMRiX
+    excludesfile = ~/.config/git/excludes
+	editor = /usr/local/bin/vim
+[push]
+    default = simple
