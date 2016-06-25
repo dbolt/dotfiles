@@ -26,7 +26,7 @@ function setup_prompt {
         fi
     }
 
-    PS1='%{$fg[yellow]%}${NAME}%{$fg[green]%}%~$(git_branch)%{$fg[green]%} → %{$fg[white]%}'
+    PS1='%{$fg[green]%}${USER}%{$fg[yellow]%}@${HOST}:%{$fg[green]%}%~$(git_branch)%{$fg[green]%} → %{$fg[white]%}'
 }
 
 function setup_aliases {
@@ -35,7 +35,11 @@ function setup_aliases {
     fi
 }
 
-NAME="$HOST:"
+function setup_path {
+    export PATH=$PATH:/sbin
+}
+
 configure_zsh
 setup_prompt
+setup_path
 setup_aliases

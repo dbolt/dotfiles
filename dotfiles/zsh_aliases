@@ -86,3 +86,24 @@ compinit
 
 #allow tab completion in the middle of a word
 setopt COMPLETE_IN_WORD
+
+####################################################
+# Useful PI commands
+####################################################
+function transmission-daemon {
+    /etc/init.d/transmission-daemon $@
+}
+
+function openvpn {
+    sudo /etc/init.d/openvpn $@
+}
+
+function plex {
+    /etc/init.d/plexmediaserver $@
+}
+
+function move-downloads {
+   ~/src/move-downloads.sh 
+}
+
+alias clean-completed='rm -rf /media/Gotham/completed/*'

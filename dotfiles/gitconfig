@@ -26,5 +26,3 @@
     pager = less -FMRiX
     excludesfile = ~/.config/git/excludes
 	editor = /usr/local/bin/vim
-[push]
-    default = simple

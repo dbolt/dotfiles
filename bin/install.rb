@@ -119,7 +119,7 @@ end
 
 def install_vim_plugins()
   puts "Installing Vundle..."
-  `git clone #{VUNDLE_URL} ~/.vim/bundle/vundle`
+  `git clone #{VUNDLE_URL} ~/.vim/bundle/Vundle.vim`
   `vim +PluginInstall +qall`
 
   puts "Installing ACK..."

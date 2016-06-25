@@ -3,19 +3,19 @@
 " *********************************************
 set nocompatible
 filetype off          
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
 
 " Add plugins here. String routes to github location.
 " Example, http://github.com/gmarik/vundle 
 Plugin 'flazz/vim-colorschemes' "Vim color schemes
-Plugin 'gmarik/vundle' "Vim package manager, makes all the vim plugins work
 Plugin 'kien/ctrlp.vim' "Type ctrl+p and serach for files easily
 Plugin 'scrooloose/nerdtree' "Easy to use file browser, type ctrl+t
 Plugin 'jistr/vim-nerdtree-tabs' "Nerdtree act like a panel instead of a tab
 Plugin 'scrooloose/nerdcommenter' "Vim plugin for intensely orgasmic commenting
 Plugin 'scrooloose/syntastic' "Syntax checking hacks for vim, displays errors on left after save
-Plugin 'Valloric/YouCompleteMe' "Auto complete while you type
+"Plugin 'Valloric/YouCompleteMe' "Auto complete while you type
 Plugin 'rdnetto/YCM-Generator' "Generate C-family auto complete config file need for YCM
 Plugin 'Raimondi/delimitMate' "Auto add dual quotes, parenthesis, brackets, etc.
 Plugin 'majutsushi/tagbar' "See your tags in code, functions, variables, classes, etc.
@@ -28,9 +28,11 @@ Plugin 'tpope/vim-fugitive' "Git wrapper so awesome, it should be illegal
 Plugin 'kien/rainbow_parentheses.vim' "Colored parenthesis, brackets, and curly braces
 Plugin 'edkolev/tmuxline.vim' "Tmux integration with vim-airline
 Plugin 'SirVer/ultisnips' "Code snippets engine
-Plugin 'honza/vim-snippets' "Code snippet language support
+Plugin 'honza/vim-snippets' "code snippet language support
 Plugin 'easymotion/vim-easymotion' "Vim motion on speed
 Plugin 'terryma/vim-multiple-cursors' "Submlime multiple text selection
+call vundle#end()
+filetype plugin indent on
 
 " ********************************************
 " ********** Important defaults **************
@@ -41,7 +43,6 @@ set backspace=indent,eol,start
 
 syntax on
 filetype on
-filetype plugin indent on
 set autoindent
 set clipboard=unnamed
 
