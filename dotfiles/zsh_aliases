@@ -90,20 +90,13 @@ setopt COMPLETE_IN_WORD
 ####################################################
 # Useful PI commands
 ####################################################
-function transmission-daemon {
-    /etc/init.d/transmission-daemon $@
-}
-
-function openvpn {
-    sudo /etc/init.d/openvpn $@
-}
-
-function plex {
-    /etc/init.d/plexmediaserver $@
-}
+alias myip='wget http://ipecho.net/plain -O - -q ; echo'
+alias transmission-daemon='sudo service transmission-daemon'
+alias openvpn='sudo service openvpn'
+alias plex='sudo service plexmediaserver'
+alias clean-completed='rm -rf /media/gotham/completed/*'
 
 function move-downloads {
    ~/src/move-downloads.sh 
 }
 
-alias clean-completed='rm -rf /media/Gotham/completed/*'
