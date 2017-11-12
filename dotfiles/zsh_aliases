@@ -96,7 +96,4 @@ alias openvpn='sudo service openvpn'
 alias plex='sudo service plexmediaserver'
 alias clean-completed='rm -rf /media/gotham/completed/*'
 
-function move-downloads {
-   ~/src/move-downloads.sh 
-}
-
+alias move-movies='/home/pi/src/dotfiles/bin/move-movies.py'
