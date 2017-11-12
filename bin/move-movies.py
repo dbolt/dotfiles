@@ -16,7 +16,7 @@ for (dirPath, dirNames, fileNames) in os.walk('.'):
 
         name = re.search("(.*)\.[\d]{4}\.", f).group(1)
         year = re.search("\.([\d]{4})\.", f).group(1)
-        quality = re.search("[\d]{4}\.([\d]{3,4}[\w]){0,1}\.", f).grou(1)
+        quality = re.search("[\d]{4}\.([\d]{3,4}[\w]){0,1}\.", f).group(1)
 
         newName = "%s.%s.%s.%s" % (name, year, quality, ext)
         oldPath = os.path.abspath(os.path.join(dirPath, f))
