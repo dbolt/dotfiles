@@ -23,7 +23,6 @@ bindkey '^Z' fancy-ctrl-z
 # BASIC LINUX COMMANDS
 ########################
 
-alias ls='ls --color=auto'
 alias ll='ls -l -h'
 alias cd..='cd ..'
 alias ..='cd ..'
